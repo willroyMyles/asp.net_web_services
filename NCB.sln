@@ -4,6 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCB", "NCB\NCB.csproj", "{9580F865-04D9-48EF-BAD5-AE9DBF921CFA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C41DFC4A-6B75-489B-91D2-9A9DD4BB6DBF} = {C41DFC4A-6B75-489B-91D2-9A9DD4BB6DBF}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JPS", "JPS\JPS.csproj", "{7304DAF3-A139-49DE-9276-92B6F43BE394}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWC", "NWC\NWC.csproj", "{C41DFC4A-6B75-489B-91D2-9A9DD4BB6DBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +22,14 @@ Global
 		{9580F865-04D9-48EF-BAD5-AE9DBF921CFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9580F865-04D9-48EF-BAD5-AE9DBF921CFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9580F865-04D9-48EF-BAD5-AE9DBF921CFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7304DAF3-A139-49DE-9276-92B6F43BE394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7304DAF3-A139-49DE-9276-92B6F43BE394}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7304DAF3-A139-49DE-9276-92B6F43BE394}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7304DAF3-A139-49DE-9276-92B6F43BE394}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C41DFC4A-6B75-489B-91D2-9A9DD4BB6DBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C41DFC4A-6B75-489B-91D2-9A9DD4BB6DBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C41DFC4A-6B75-489B-91D2-9A9DD4BB6DBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C41DFC4A-6B75-489B-91D2-9A9DD4BB6DBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
