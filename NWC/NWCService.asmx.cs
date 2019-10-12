@@ -39,11 +39,12 @@ namespace NWC
         }
 
         [WebMethod]
-        public void login(string id, string password)
+        public bool Login(string id, string password)
         {
             UsersTableAdapters.UsersApaterTableAdapter uta = new UsersTableAdapters.UsersApaterTableAdapter();
             var result = uta.GetUserById(id);
-            if (result[0] == null) return;
+            if (result.Rows.Count <= 0) return false; 
+            if (result[0] == null) return false;
             if (result[0].Password == password)
             {
                 User user = new User();
@@ -54,8 +55,10 @@ namespace NWC
                 user.Password = result[0].Password;
                 user.Linked = result[0].Linked;
                 userAgent = user;
-
+                return true;
+                
             }
+            return false;
         }
         [WebMethod]
         public void updateBalance(string id, int balance)
@@ -76,10 +79,42 @@ namespace NWC
             uta.UpdateLinkStatus(status, id);
         }
         [WebMethod]
-
         public User getUser()
         {
             return userAgent;
+        }
+        [WebMethod]
+        public string GetUsername()
+        {
+            return userAgent.Name;
+        }
+        [WebMethod]
+        public string GetUserId()
+        {
+            return userAgent.Id;
+        }
+        [WebMethod]
+        public string GetUserEmail()
+        {
+            return userAgent.Email;
+        }
+        [WebMethod]
+        public int GetUserBalance()
+        {
+            return userAgent.Balance;
+        }
+        [WebMethod]
+        public bool GetUserLinkedStatus()
+        {
+            return userAgent.Linked;
+        }
+        [WebMethod]
+        public bool GetUserLinkedStatusById(string id)
+        {
+            UsersTableAdapters.UsersApaterTableAdapter uta = new UsersTableAdapters.UsersApaterTableAdapter();
+            var result = uta.GetUserById(id);
+            if (result[0] == null) return false;
+            return result[0].Linked;
         }
     }
 }

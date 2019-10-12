@@ -25,7 +25,7 @@
       <s:element name="registerResponse">
         <s:complexType />
       </s:element>
-      <s:element name="login">
+      <s:element name="Login">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
@@ -33,8 +33,12 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="loginResponse">
-        <s:complexType />
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoginResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="updateBalance">
         <s:complexType>
@@ -78,6 +82,70 @@
           <s:element minOccurs="1" maxOccurs="1" name="Linked" type="s:boolean" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetUsername">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUsernameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsernameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserId">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserEmail">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserEmailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserBalance">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserBalanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetUserBalanceResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserLinkedStatus">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserLinkedStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetUserLinkedStatusResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserLinkedStatusById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserLinkedStatusByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetUserLinkedStatusByIdResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -92,11 +160,11 @@
   <wsdl:message name="registerSoapOut">
     <wsdl:part name="parameters" element="tns:registerResponse" />
   </wsdl:message>
-  <wsdl:message name="loginSoapIn">
-    <wsdl:part name="parameters" element="tns:login" />
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
   </wsdl:message>
-  <wsdl:message name="loginSoapOut">
-    <wsdl:part name="parameters" element="tns:loginResponse" />
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
   <wsdl:message name="updateBalanceSoapIn">
     <wsdl:part name="parameters" element="tns:updateBalance" />
@@ -116,6 +184,42 @@
   <wsdl:message name="getUserSoapOut">
     <wsdl:part name="parameters" element="tns:getUserResponse" />
   </wsdl:message>
+  <wsdl:message name="GetUsernameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsername" />
+  </wsdl:message>
+  <wsdl:message name="GetUsernameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserId" />
+  </wsdl:message>
+  <wsdl:message name="GetUserIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserEmail" />
+  </wsdl:message>
+  <wsdl:message name="GetUserEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserBalanceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserBalance" />
+  </wsdl:message>
+  <wsdl:message name="GetUserBalanceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserLinkedStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserLinkedStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetUserLinkedStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserLinkedStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserLinkedStatusByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserLinkedStatusById" />
+  </wsdl:message>
+  <wsdl:message name="GetUserLinkedStatusByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserLinkedStatusByIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="NWCServiceSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -125,9 +229,9 @@
       <wsdl:input message="tns:registerSoapIn" />
       <wsdl:output message="tns:registerSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="login">
-      <wsdl:input message="tns:loginSoapIn" />
-      <wsdl:output message="tns:loginSoapOut" />
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="updateBalance">
       <wsdl:input message="tns:updateBalanceSoapIn" />
@@ -140,6 +244,30 @@
     <wsdl:operation name="getUser">
       <wsdl:input message="tns:getUserSoapIn" />
       <wsdl:output message="tns:getUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsername">
+      <wsdl:input message="tns:GetUsernameSoapIn" />
+      <wsdl:output message="tns:GetUsernameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserId">
+      <wsdl:input message="tns:GetUserIdSoapIn" />
+      <wsdl:output message="tns:GetUserIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserEmail">
+      <wsdl:input message="tns:GetUserEmailSoapIn" />
+      <wsdl:output message="tns:GetUserEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserBalance">
+      <wsdl:input message="tns:GetUserBalanceSoapIn" />
+      <wsdl:output message="tns:GetUserBalanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLinkedStatus">
+      <wsdl:input message="tns:GetUserLinkedStatusSoapIn" />
+      <wsdl:output message="tns:GetUserLinkedStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLinkedStatusById">
+      <wsdl:input message="tns:GetUserLinkedStatusByIdSoapIn" />
+      <wsdl:output message="tns:GetUserLinkedStatusByIdSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NWCServiceSoap" type="tns:NWCServiceSoap">
@@ -162,8 +290,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="login">
-      <soap:operation soapAction="http://tempuri.org/login" style="document" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -198,6 +326,60 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetUsername">
+      <soap:operation soapAction="http://tempuri.org/GetUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserId">
+      <soap:operation soapAction="http://tempuri.org/GetUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserEmail">
+      <soap:operation soapAction="http://tempuri.org/GetUserEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserBalance">
+      <soap:operation soapAction="http://tempuri.org/GetUserBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLinkedStatus">
+      <soap:operation soapAction="http://tempuri.org/GetUserLinkedStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLinkedStatusById">
+      <soap:operation soapAction="http://tempuri.org/GetUserLinkedStatusById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NWCServiceSoap12" type="tns:NWCServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -219,8 +401,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="login">
-      <soap12:operation soapAction="http://tempuri.org/login" style="document" />
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -248,6 +430,60 @@
     </wsdl:operation>
     <wsdl:operation name="getUser">
       <soap12:operation soapAction="http://tempuri.org/getUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsername">
+      <soap12:operation soapAction="http://tempuri.org/GetUsername" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserId">
+      <soap12:operation soapAction="http://tempuri.org/GetUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserEmail">
+      <soap12:operation soapAction="http://tempuri.org/GetUserEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserBalance">
+      <soap12:operation soapAction="http://tempuri.org/GetUserBalance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLinkedStatus">
+      <soap12:operation soapAction="http://tempuri.org/GetUserLinkedStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLinkedStatusById">
+      <soap12:operation soapAction="http://tempuri.org/GetUserLinkedStatusById" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

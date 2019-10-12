@@ -10,9 +10,15 @@ namespace NCB
     public partial class _Default : Page
     {
         public User user = GV.User;
+        public OtherUser nwcUser = GV.NwcUser;
+        public OtherUser jpsUser = GV.JpsUser;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(user != null)
+            if (user.Nwc)
+            {
+                NWCLogin_Click(sender,e);
+            }
         }
 
         protected void Deposit_Click(object sender, EventArgs e)
@@ -39,7 +45,7 @@ namespace NCB
         {
             NWCServices.NWCServiceSoapClient nwcsoap = new NWCServices.NWCServiceSoapClient();
             UserTableAdapters.UsersTableAdapter uta = new UserTableAdapters.UsersTableAdapter();
-            var result = uta.GetUserById(nwcId.Text);
+            var result = uta.GetUserById(ncbidbox.Text);
             if (result[0] == null) return;
             if (result[0].Password == nwcPassword.Text)
             {
@@ -53,8 +59,106 @@ namespace NCB
                 user.Jps = result[0].Jps;
 
                 nwcsoap.register(user.Id,user.Name,user.Email,user.Password);
-                nwcsoap.login(user.Id, user.Password);
+                NWCLogin_Click(sender, e);
             }
+        }
+
+        protected void NWCLogin_Click(object sender, EventArgs e)
+        {
+            NWCServices.NWCServiceSoapClient nwcsoap = new NWCServices.NWCServiceSoapClient();
+            
+            if(nwcsoap.Login(user.Id, user.Password))
+            {
+                nwcUser["name"] = nwcsoap.GetUsername();
+                nwcUser["id"] = nwcsoap.GetUserId();
+                nwcUser["email"] = nwcsoap.GetUserEmail();
+                nwcUser["balance"] = nwcsoap.GetUserBalance();
+                nwcUser["linked"] = nwcsoap.GetUserLinkedStatus();
+                user.Nwc = true;
+                UserTableAdapters.UsersTableAdapter uta = new UserTableAdapters.UsersTableAdapter();
+                uta.UpdateNwc(user.Nwc, user.Id);
+                GV.NwcUser = nwcUser;
+            }
+        }
+
+        protected void nwcPaymentButton_Click(object sender, EventArgs e)
+        {
+            var amount = int.Parse(nwcPayment.Text);
+            UserTableAdapters.UsersTableAdapter uta = new UserTableAdapters.UsersTableAdapter();
+            var result = uta.GetUserById(user.Id);
+            var newBalance = result[0].Balance - amount;
+
+            NWCServices.NWCServiceSoapClient nwcsoap = new NWCServices.NWCServiceSoapClient();
+            var nwcnewBalance = nwcsoap.GetUserBalance() + amount;
+            nwcsoap.updateBalance(user.Id, nwcnewBalance);
+            uta.UpdateBalance(newBalance, user.Id);
+            user.Balance = newBalance;
+            GV.NwcUser["balance"] = nwcnewBalance;
+        }
+
+        protected void nwcUnlink_Click(object sender, EventArgs e)
+        {
+            user.Nwc = false;
+            UserTableAdapters.UsersTableAdapter uta = new UserTableAdapters.UsersTableAdapter();
+            uta.UpdateNwc(user.Nwc, user.Id);
+        }
+
+        public void getNwcusername()
+        {
+
+        }
+
+        protected void JPSSubmit_Click(object sender, EventArgs e)
+        {
+            JPSService.JPSServiceSoapClient jpsopap = new JPSService.JPSServiceSoapClient();
+            UserTableAdapters.UsersTableAdapter uta = new UserTableAdapters.UsersTableAdapter();
+            var result = uta.GetUserById(jpsidbox.Text);
+            if (result[0] == null) return;
+            if (result[0].Password == jpspassword.Text)
+            {
+                jpsopap.Register(result[0].Id, result[0].Name, result[0].Email, result[0].Password);
+                JPSLogin_Click(sender, e);
+            }
+        }
+
+        protected void JPSLogin_Click(object sender, EventArgs e)
+        {
+            JPSService.JPSServiceSoapClient jpsopap = new JPSService.JPSServiceSoapClient();
+
+            if (jpsopap.Login(user.Id, user.Password))
+            {
+                jpsUser["name"] = jpsopap.GetUsername();
+                jpsUser["id"] = jpsopap.GetUserId();
+                jpsUser["email"] = jpsopap.GetUserEmail();
+                jpsUser["balance"] = jpsopap.GetUserBalance();
+                jpsUser["linked"] = jpsopap.GetUserLinkedStatus();
+                user.Jps = true;
+                UserTableAdapters.UsersTableAdapter uta = new UserTableAdapters.UsersTableAdapter();
+                uta.UpdateJps(user.Jps, user.Id);
+                GV.JpsUser = jpsUser;
+            }
+        }
+
+        protected void jpsUnlink_Click(object sender, EventArgs e)
+        {
+            user.Jps = false;
+            UserTableAdapters.UsersTableAdapter uta = new UserTableAdapters.UsersTableAdapter();
+            uta.UpdateJps(user.Jps, user.Id);
+        }
+
+        protected void jpsPaymentButton_Click(object sender, EventArgs e)
+        {
+            var amount = int.Parse(jpsPayment.Text);
+            UserTableAdapters.UsersTableAdapter uta = new UserTableAdapters.UsersTableAdapter();
+            var result = uta.GetUserById(user.Id);
+            var newBalance = result[0].Balance - amount;
+            JPSService.JPSServiceSoapClient jpsopap = new JPSService.JPSServiceSoapClient();
+
+            var jpsnewBalance = jpsopap.GetUserBalance() + amount;
+            jpsopap.updateBalance(user.Id, jpsnewBalance);
+            uta.UpdateBalance(newBalance, user.Id);
+            user.Balance = newBalance;
+            GV.JpsUser["balance"] = jpsnewBalance;
         }
     }
 }

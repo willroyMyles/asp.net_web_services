@@ -87,6 +87,7 @@
       <DependentUpon>NWCService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Other.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
     <Compile Include="User.designer.cs">

@@ -155,11 +155,11 @@ namespace NCB.NWCServices {
         System.Threading.Tasks.Task<NCB.NWCServices.registerResponse> registerAsync(NCB.NWCServices.registerRequest request);
         
         // CODEGEN: Generating message contract since element name id from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/login", ReplyAction="*")]
-        NCB.NWCServices.loginResponse login(NCB.NWCServices.loginRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Login", ReplyAction="*")]
+        NCB.NWCServices.LoginResponse Login(NCB.NWCServices.LoginRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/login", ReplyAction="*")]
-        System.Threading.Tasks.Task<NCB.NWCServices.loginResponse> loginAsync(NCB.NWCServices.loginRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Login", ReplyAction="*")]
+        System.Threading.Tasks.Task<NCB.NWCServices.LoginResponse> LoginAsync(NCB.NWCServices.LoginRequest request);
         
         // CODEGEN: Generating message contract since element name id from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/updateBalance", ReplyAction="*")]
@@ -181,6 +181,46 @@ namespace NCB.NWCServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getUser", ReplyAction="*")]
         System.Threading.Tasks.Task<NCB.NWCServices.getUserResponse> getUserAsync(NCB.NWCServices.getUserRequest request);
+        
+        // CODEGEN: Generating message contract since element name GetUsernameResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUsername", ReplyAction="*")]
+        NCB.NWCServices.GetUsernameResponse GetUsername(NCB.NWCServices.GetUsernameRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUsername", ReplyAction="*")]
+        System.Threading.Tasks.Task<NCB.NWCServices.GetUsernameResponse> GetUsernameAsync(NCB.NWCServices.GetUsernameRequest request);
+        
+        // CODEGEN: Generating message contract since element name GetUserIdResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUserId", ReplyAction="*")]
+        NCB.NWCServices.GetUserIdResponse GetUserId(NCB.NWCServices.GetUserIdRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUserId", ReplyAction="*")]
+        System.Threading.Tasks.Task<NCB.NWCServices.GetUserIdResponse> GetUserIdAsync(NCB.NWCServices.GetUserIdRequest request);
+        
+        // CODEGEN: Generating message contract since element name GetUserEmailResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUserEmail", ReplyAction="*")]
+        NCB.NWCServices.GetUserEmailResponse GetUserEmail(NCB.NWCServices.GetUserEmailRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUserEmail", ReplyAction="*")]
+        System.Threading.Tasks.Task<NCB.NWCServices.GetUserEmailResponse> GetUserEmailAsync(NCB.NWCServices.GetUserEmailRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUserBalance", ReplyAction="*")]
+        int GetUserBalance();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUserBalance", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> GetUserBalanceAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUserLinkedStatus", ReplyAction="*")]
+        bool GetUserLinkedStatus();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUserLinkedStatus", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> GetUserLinkedStatusAsync();
+        
+        // CODEGEN: Generating message contract since element name id from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUserLinkedStatusById", ReplyAction="*")]
+        NCB.NWCServices.GetUserLinkedStatusByIdResponse GetUserLinkedStatusById(NCB.NWCServices.GetUserLinkedStatusByIdRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUserLinkedStatusById", ReplyAction="*")]
+        System.Threading.Tasks.Task<NCB.NWCServices.GetUserLinkedStatusByIdResponse> GetUserLinkedStatusByIdAsync(NCB.NWCServices.GetUserLinkedStatusByIdRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -321,15 +361,15 @@ namespace NCB.NWCServices {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class loginRequest {
+    public partial class LoginRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="login", Namespace="http://tempuri.org/", Order=0)]
-        public NCB.NWCServices.loginRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="Login", Namespace="http://tempuri.org/", Order=0)]
+        public NCB.NWCServices.LoginRequestBody Body;
         
-        public loginRequest() {
+        public LoginRequest() {
         }
         
-        public loginRequest(NCB.NWCServices.loginRequestBody Body) {
+        public LoginRequest(NCB.NWCServices.LoginRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -338,7 +378,7 @@ namespace NCB.NWCServices {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class loginRequestBody {
+    public partial class LoginRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string id;
@@ -346,10 +386,10 @@ namespace NCB.NWCServices {
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
         public string password;
         
-        public loginRequestBody() {
+        public LoginRequestBody() {
         }
         
-        public loginRequestBody(string id, string password) {
+        public LoginRequestBody(string id, string password) {
             this.id = id;
             this.password = password;
         }
@@ -359,15 +399,15 @@ namespace NCB.NWCServices {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class loginResponse {
+    public partial class LoginResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="loginResponse", Namespace="http://tempuri.org/", Order=0)]
-        public NCB.NWCServices.loginResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="LoginResponse", Namespace="http://tempuri.org/", Order=0)]
+        public NCB.NWCServices.LoginResponseBody Body;
         
-        public loginResponse() {
+        public LoginResponse() {
         }
         
-        public loginResponse(NCB.NWCServices.loginResponseBody Body) {
+        public LoginResponse(NCB.NWCServices.LoginResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -375,10 +415,17 @@ namespace NCB.NWCServices {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class loginResponseBody {
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class LoginResponseBody {
         
-        public loginResponseBody() {
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool LoginResult;
+        
+        public LoginResponseBody() {
+        }
+        
+        public LoginResponseBody(bool LoginResult) {
+            this.LoginResult = LoginResult;
         }
     }
     
@@ -573,6 +620,257 @@ namespace NCB.NWCServices {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetUsernameRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUsername", Namespace="http://tempuri.org/", Order=0)]
+        public NCB.NWCServices.GetUsernameRequestBody Body;
+        
+        public GetUsernameRequest() {
+        }
+        
+        public GetUsernameRequest(NCB.NWCServices.GetUsernameRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class GetUsernameRequestBody {
+        
+        public GetUsernameRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetUsernameResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUsernameResponse", Namespace="http://tempuri.org/", Order=0)]
+        public NCB.NWCServices.GetUsernameResponseBody Body;
+        
+        public GetUsernameResponse() {
+        }
+        
+        public GetUsernameResponse(NCB.NWCServices.GetUsernameResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetUsernameResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string GetUsernameResult;
+        
+        public GetUsernameResponseBody() {
+        }
+        
+        public GetUsernameResponseBody(string GetUsernameResult) {
+            this.GetUsernameResult = GetUsernameResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetUserIdRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUserId", Namespace="http://tempuri.org/", Order=0)]
+        public NCB.NWCServices.GetUserIdRequestBody Body;
+        
+        public GetUserIdRequest() {
+        }
+        
+        public GetUserIdRequest(NCB.NWCServices.GetUserIdRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class GetUserIdRequestBody {
+        
+        public GetUserIdRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetUserIdResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUserIdResponse", Namespace="http://tempuri.org/", Order=0)]
+        public NCB.NWCServices.GetUserIdResponseBody Body;
+        
+        public GetUserIdResponse() {
+        }
+        
+        public GetUserIdResponse(NCB.NWCServices.GetUserIdResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetUserIdResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string GetUserIdResult;
+        
+        public GetUserIdResponseBody() {
+        }
+        
+        public GetUserIdResponseBody(string GetUserIdResult) {
+            this.GetUserIdResult = GetUserIdResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetUserEmailRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUserEmail", Namespace="http://tempuri.org/", Order=0)]
+        public NCB.NWCServices.GetUserEmailRequestBody Body;
+        
+        public GetUserEmailRequest() {
+        }
+        
+        public GetUserEmailRequest(NCB.NWCServices.GetUserEmailRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class GetUserEmailRequestBody {
+        
+        public GetUserEmailRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetUserEmailResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUserEmailResponse", Namespace="http://tempuri.org/", Order=0)]
+        public NCB.NWCServices.GetUserEmailResponseBody Body;
+        
+        public GetUserEmailResponse() {
+        }
+        
+        public GetUserEmailResponse(NCB.NWCServices.GetUserEmailResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetUserEmailResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string GetUserEmailResult;
+        
+        public GetUserEmailResponseBody() {
+        }
+        
+        public GetUserEmailResponseBody(string GetUserEmailResult) {
+            this.GetUserEmailResult = GetUserEmailResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetUserLinkedStatusByIdRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUserLinkedStatusById", Namespace="http://tempuri.org/", Order=0)]
+        public NCB.NWCServices.GetUserLinkedStatusByIdRequestBody Body;
+        
+        public GetUserLinkedStatusByIdRequest() {
+        }
+        
+        public GetUserLinkedStatusByIdRequest(NCB.NWCServices.GetUserLinkedStatusByIdRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetUserLinkedStatusByIdRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string id;
+        
+        public GetUserLinkedStatusByIdRequestBody() {
+        }
+        
+        public GetUserLinkedStatusByIdRequestBody(string id) {
+            this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetUserLinkedStatusByIdResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUserLinkedStatusByIdResponse", Namespace="http://tempuri.org/", Order=0)]
+        public NCB.NWCServices.GetUserLinkedStatusByIdResponseBody Body;
+        
+        public GetUserLinkedStatusByIdResponse() {
+        }
+        
+        public GetUserLinkedStatusByIdResponse(NCB.NWCServices.GetUserLinkedStatusByIdResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetUserLinkedStatusByIdResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public bool GetUserLinkedStatusByIdResult;
+        
+        public GetUserLinkedStatusByIdResponseBody() {
+        }
+        
+        public GetUserLinkedStatusByIdResponseBody(bool GetUserLinkedStatusByIdResult) {
+            this.GetUserLinkedStatusByIdResult = GetUserLinkedStatusByIdResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface NWCServiceSoapChannel : NCB.NWCServices.NWCServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -654,29 +952,30 @@ namespace NCB.NWCServices {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        NCB.NWCServices.loginResponse NCB.NWCServices.NWCServiceSoap.login(NCB.NWCServices.loginRequest request) {
-            return base.Channel.login(request);
+        NCB.NWCServices.LoginResponse NCB.NWCServices.NWCServiceSoap.Login(NCB.NWCServices.LoginRequest request) {
+            return base.Channel.Login(request);
         }
         
-        public void login(string id, string password) {
-            NCB.NWCServices.loginRequest inValue = new NCB.NWCServices.loginRequest();
-            inValue.Body = new NCB.NWCServices.loginRequestBody();
+        public bool Login(string id, string password) {
+            NCB.NWCServices.LoginRequest inValue = new NCB.NWCServices.LoginRequest();
+            inValue.Body = new NCB.NWCServices.LoginRequestBody();
             inValue.Body.id = id;
             inValue.Body.password = password;
-            NCB.NWCServices.loginResponse retVal = ((NCB.NWCServices.NWCServiceSoap)(this)).login(inValue);
+            NCB.NWCServices.LoginResponse retVal = ((NCB.NWCServices.NWCServiceSoap)(this)).Login(inValue);
+            return retVal.Body.LoginResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<NCB.NWCServices.loginResponse> NCB.NWCServices.NWCServiceSoap.loginAsync(NCB.NWCServices.loginRequest request) {
-            return base.Channel.loginAsync(request);
+        System.Threading.Tasks.Task<NCB.NWCServices.LoginResponse> NCB.NWCServices.NWCServiceSoap.LoginAsync(NCB.NWCServices.LoginRequest request) {
+            return base.Channel.LoginAsync(request);
         }
         
-        public System.Threading.Tasks.Task<NCB.NWCServices.loginResponse> loginAsync(string id, string password) {
-            NCB.NWCServices.loginRequest inValue = new NCB.NWCServices.loginRequest();
-            inValue.Body = new NCB.NWCServices.loginRequestBody();
+        public System.Threading.Tasks.Task<NCB.NWCServices.LoginResponse> LoginAsync(string id, string password) {
+            NCB.NWCServices.LoginRequest inValue = new NCB.NWCServices.LoginRequest();
+            inValue.Body = new NCB.NWCServices.LoginRequestBody();
             inValue.Body.id = id;
             inValue.Body.password = password;
-            return ((NCB.NWCServices.NWCServiceSoap)(this)).loginAsync(inValue);
+            return ((NCB.NWCServices.NWCServiceSoap)(this)).LoginAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -752,6 +1051,116 @@ namespace NCB.NWCServices {
             NCB.NWCServices.getUserRequest inValue = new NCB.NWCServices.getUserRequest();
             inValue.Body = new NCB.NWCServices.getUserRequestBody();
             return ((NCB.NWCServices.NWCServiceSoap)(this)).getUserAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NCB.NWCServices.GetUsernameResponse NCB.NWCServices.NWCServiceSoap.GetUsername(NCB.NWCServices.GetUsernameRequest request) {
+            return base.Channel.GetUsername(request);
+        }
+        
+        public string GetUsername() {
+            NCB.NWCServices.GetUsernameRequest inValue = new NCB.NWCServices.GetUsernameRequest();
+            inValue.Body = new NCB.NWCServices.GetUsernameRequestBody();
+            NCB.NWCServices.GetUsernameResponse retVal = ((NCB.NWCServices.NWCServiceSoap)(this)).GetUsername(inValue);
+            return retVal.Body.GetUsernameResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<NCB.NWCServices.GetUsernameResponse> NCB.NWCServices.NWCServiceSoap.GetUsernameAsync(NCB.NWCServices.GetUsernameRequest request) {
+            return base.Channel.GetUsernameAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<NCB.NWCServices.GetUsernameResponse> GetUsernameAsync() {
+            NCB.NWCServices.GetUsernameRequest inValue = new NCB.NWCServices.GetUsernameRequest();
+            inValue.Body = new NCB.NWCServices.GetUsernameRequestBody();
+            return ((NCB.NWCServices.NWCServiceSoap)(this)).GetUsernameAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NCB.NWCServices.GetUserIdResponse NCB.NWCServices.NWCServiceSoap.GetUserId(NCB.NWCServices.GetUserIdRequest request) {
+            return base.Channel.GetUserId(request);
+        }
+        
+        public string GetUserId() {
+            NCB.NWCServices.GetUserIdRequest inValue = new NCB.NWCServices.GetUserIdRequest();
+            inValue.Body = new NCB.NWCServices.GetUserIdRequestBody();
+            NCB.NWCServices.GetUserIdResponse retVal = ((NCB.NWCServices.NWCServiceSoap)(this)).GetUserId(inValue);
+            return retVal.Body.GetUserIdResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<NCB.NWCServices.GetUserIdResponse> NCB.NWCServices.NWCServiceSoap.GetUserIdAsync(NCB.NWCServices.GetUserIdRequest request) {
+            return base.Channel.GetUserIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<NCB.NWCServices.GetUserIdResponse> GetUserIdAsync() {
+            NCB.NWCServices.GetUserIdRequest inValue = new NCB.NWCServices.GetUserIdRequest();
+            inValue.Body = new NCB.NWCServices.GetUserIdRequestBody();
+            return ((NCB.NWCServices.NWCServiceSoap)(this)).GetUserIdAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NCB.NWCServices.GetUserEmailResponse NCB.NWCServices.NWCServiceSoap.GetUserEmail(NCB.NWCServices.GetUserEmailRequest request) {
+            return base.Channel.GetUserEmail(request);
+        }
+        
+        public string GetUserEmail() {
+            NCB.NWCServices.GetUserEmailRequest inValue = new NCB.NWCServices.GetUserEmailRequest();
+            inValue.Body = new NCB.NWCServices.GetUserEmailRequestBody();
+            NCB.NWCServices.GetUserEmailResponse retVal = ((NCB.NWCServices.NWCServiceSoap)(this)).GetUserEmail(inValue);
+            return retVal.Body.GetUserEmailResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<NCB.NWCServices.GetUserEmailResponse> NCB.NWCServices.NWCServiceSoap.GetUserEmailAsync(NCB.NWCServices.GetUserEmailRequest request) {
+            return base.Channel.GetUserEmailAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<NCB.NWCServices.GetUserEmailResponse> GetUserEmailAsync() {
+            NCB.NWCServices.GetUserEmailRequest inValue = new NCB.NWCServices.GetUserEmailRequest();
+            inValue.Body = new NCB.NWCServices.GetUserEmailRequestBody();
+            return ((NCB.NWCServices.NWCServiceSoap)(this)).GetUserEmailAsync(inValue);
+        }
+        
+        public int GetUserBalance() {
+            return base.Channel.GetUserBalance();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetUserBalanceAsync() {
+            return base.Channel.GetUserBalanceAsync();
+        }
+        
+        public bool GetUserLinkedStatus() {
+            return base.Channel.GetUserLinkedStatus();
+        }
+        
+        public System.Threading.Tasks.Task<bool> GetUserLinkedStatusAsync() {
+            return base.Channel.GetUserLinkedStatusAsync();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        NCB.NWCServices.GetUserLinkedStatusByIdResponse NCB.NWCServices.NWCServiceSoap.GetUserLinkedStatusById(NCB.NWCServices.GetUserLinkedStatusByIdRequest request) {
+            return base.Channel.GetUserLinkedStatusById(request);
+        }
+        
+        public bool GetUserLinkedStatusById(string id) {
+            NCB.NWCServices.GetUserLinkedStatusByIdRequest inValue = new NCB.NWCServices.GetUserLinkedStatusByIdRequest();
+            inValue.Body = new NCB.NWCServices.GetUserLinkedStatusByIdRequestBody();
+            inValue.Body.id = id;
+            NCB.NWCServices.GetUserLinkedStatusByIdResponse retVal = ((NCB.NWCServices.NWCServiceSoap)(this)).GetUserLinkedStatusById(inValue);
+            return retVal.Body.GetUserLinkedStatusByIdResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<NCB.NWCServices.GetUserLinkedStatusByIdResponse> NCB.NWCServices.NWCServiceSoap.GetUserLinkedStatusByIdAsync(NCB.NWCServices.GetUserLinkedStatusByIdRequest request) {
+            return base.Channel.GetUserLinkedStatusByIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<NCB.NWCServices.GetUserLinkedStatusByIdResponse> GetUserLinkedStatusByIdAsync(string id) {
+            NCB.NWCServices.GetUserLinkedStatusByIdRequest inValue = new NCB.NWCServices.GetUserLinkedStatusByIdRequest();
+            inValue.Body = new NCB.NWCServices.GetUserLinkedStatusByIdRequestBody();
+            inValue.Body.id = id;
+            return ((NCB.NWCServices.NWCServiceSoap)(this)).GetUserLinkedStatusByIdAsync(inValue);
         }
     }
 }

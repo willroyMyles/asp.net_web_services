@@ -16,7 +16,7 @@
                         <p><%= user.Id %></p>
                         <p><%= user.Name %></p>
                         <p><%= user.Email %></p>
-                        <p>Balance : <%= user.Balance %></p>
+                        <p>Balance : $<%= user.Balance %></p>
                         <p>Connected to JPS : <%= user.Jps %></p>
                         <p>Connected to NWC : <%= user.Nwc %></p>
                     </div>
@@ -54,7 +54,7 @@
                                 <div class="row my-2">
                                    <div class="input-group">
                                        <div class="input-group-prepend">
-                                           <asp:Button OnClick="Widthdrawl_Click" ID="nwcId" runat="server" Text="NCB ID" class="btn btn-secondary"/>   
+                                        <span class="input-group-text" id="my-addon">NCB Id</span>
                                        </div>
                                        <asp:TextBox ID="ncbidbox" TextMode="Number" runat="server" CssClass="form-control"></asp:TextBox>
                                    </div>
@@ -62,23 +62,21 @@
                                 <div class="row my-2">
                                    <div class="input-group">
                                        <div class="input-group-prepend">
-                                           <asp:Button OnClick="Widthdrawl_Click" ID="Button4" runat="server" Text="NCB Password" class="btn btn-secondary"/>   
+                                        <span class="input-group-text" id="my-addon">NCB Password</span>
                                        </div>
                                        <asp:TextBox ID="nwcPassword" TextMode="Password" runat="server" CssClass="form-control"></asp:TextBox>
                                    </div>
                                </div>
-                                <div class="row my-3 center text-center align-center justify-content-between">
+                                <div class="row my-3 center text-center align-center justify-content-center">
                                     <asp:Button OnClick="NWCSubmit_Click" ID="NWCSubmit" runat="server" Text="Link" CssClass="btn btn-secondary btn-block" /> 
                                </div>
                                     
                                 <div class="row justify-content-center">or  </div>
                                   
                             </div>
-                            <div class="card-footer text-muted justify-content-between my-n2">
-                                 <div class="row my-2">
-                   <div class="col-md-12">
-                        <asp:Button OnClick="Widthdrawl_Click" ID="Button3" runat="server" Text="Login To NWC" class="btn btn-primary btn-block"/>   
-                   </div>
+                            <div class="card-footer text-muted  my-n2">
+                                 <div class="row my-2 justify-content-center">
+                        <asp:Button OnClick="NWCLogin_Click" ID="NWCLogin" runat="server" Text="Login To NWC" class="btn btn-primary btn-block"/>   
                                </div>
                             </div>
                             
@@ -91,17 +89,23 @@
                                 NWC Information
                             </div>
                             <div class="card-body">
-                                sign up or log in
+                                <p><%= nwcUser["id"] %></p>
+                                <p><%= nwcUser["name"] %></p>
+                                <p><%= nwcUser["email"] %></p>
+                                <p>Balance : $<%= nwcUser["balance"] %></p>
                             </div>
                             <div class="card-footer text-muted justify-content-between">
                                  <div class="row my-2">
                                    <div class="input-group">
                                        <div class="input-group-prepend">
-                                           <asp:Button OnClick="Widthdrawl_Click" ID="Button2" runat="server" Text="Make Payment" class="btn btn-secondary"/>   
+                                           <asp:Button OnClick="nwcPaymentButton_Click" ID="nwcPaymentButton" runat="server" Text="Make Payment" class="btn btn-primary"/>   
                                        </div>
-                                       <asp:TextBox ID="TextBox2" TextMode="Number" runat="server" CssClass="form-control"></asp:TextBox>
+                                       <asp:TextBox ID="nwcPayment" TextMode="Number" runat="server" CssClass="form-control"></asp:TextBox>
                                    </div>
                                </div>
+                                <div class="row justify-content-center">
+                                    <asp:Button OnClick="nwcUnlink_Click" ID="nwcUnlink" runat="server" Text="UnLink Account" class="btn btn-secondary btn-block btn-light"/>
+                                </div>
                             </div>
                             
                         </div>
@@ -110,7 +114,77 @@
                     } %>
             </div>
             <div class="col-md-4">
+                                <% if (user != null)
+                         {
+                             if (user.Jps == false) //shows when jps isnt linked
+                             {%>
+                    <div class="card justify-content-between">
+                            <div class="card-header">
+                                Link JPS Account
+                            </div>
+                            <div class="card-body">
+                                <div class="row my-2">
+                                   <div class="input-group">
+                                       <div class="input-group-prepend">
+                                        <span class="input-group-text" id="my-addon">NCB Id</span>
+                                       </div>
+                                       <asp:TextBox ID="jpsidbox" runat="server" CssClass="form-control"></asp:TextBox>
+                                   </div>
+                               </div>
+                                <div class="row my-2">
+                                   <div class="input-group">
+                                       <div class="input-group-prepend">
+                                        <span class="input-group-text" id="my-addon">NCB Password</span>
+                                       </div>
+                                       <asp:TextBox ID="jpspassword" TextMode="Password" runat="server" CssClass="form-control"></asp:TextBox>
+                                   </div>
+                               </div>
+                                <div class="row my-3 justify-content-center">
+                                    <asp:Button OnClick="JPSSubmit_Click" ID="JPSSubmit" runat="server" Text="Link" CssClass="btn btn-secondary btn-block" /> 
+                               </div>
+                                    
+                                <div class="row justify-content-center">or  </div>
+                                  
+                            </div>
+                            <div class="card-footer text-muted justify-content-between my-n2">
+                                 <div class="row my-2 justify-content-center">
+                        <asp:Button OnClick="JPSLogin_Click" ID="JPSLogin" runat="server" Text="Login To JPS" class="btn btn-primary btn-block"/>   
+                               </div>
+                            </div>
+                            
+                        </div>
+                <%}
+                        else { // shows when jps is linked%> 
                 
+                 <div class="card">
+                            <div class="card-header">
+                                JPS Account Information
+                            </div>
+                            <div class="card-body">
+                                <p><%= jpsUser["id"] %></p>
+                                <p><%= jpsUser["name"] %></p>
+                                <p><%= jpsUser["email"] %></p>
+                                <p>Balance : $<%= jpsUser["balance"] %></p>
+                            </div>
+                            <div class="card-footer text-muted justify-content-between">
+                                 <div class="row my-2">
+                                   <div class="input-group">
+                                       <div class="input-group-prepend">
+                                           <asp:Button OnClick="jpsPaymentButton_Click" ID="jpsPaymentButton" runat="server" Text="Make Payment" class="btn btn-primary"/>   
+                                       </div>
+                                       <asp:TextBox ID="jpsPayment" TextMode="Number" runat="server" CssClass="form-control"></asp:TextBox>
+                                   </div>
+                               </div>
+                                <div class="row justify-content-center">
+                                    <asp:Button OnClick="jpsUnlink_Click" ID="jpsUnlink" runat="server" Text="UnLink Account" class="btn btn-secondary btn-block btn-light"/>
+                                </div>
+                            </div>
+                            
+                        </div>
+                <%}
+
+                    } %>
+            </div> 
             </div>
         </div>
     </div>

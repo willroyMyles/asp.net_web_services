@@ -11,7 +11,7 @@ namespace JPS
         private string id;
         private string email;
         private string password;
-        private int balance = 3000;
+        private int balance = 10;
         private bool linked = false;
 
        
