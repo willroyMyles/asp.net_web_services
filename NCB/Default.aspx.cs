@@ -14,10 +14,12 @@ namespace NCB
         public OtherUser jpsUser = GV.JpsUser;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(user != null)
-            if (user.Nwc)
+            if (user != null)
             {
-                NWCLogin_Click(sender,e);
+                if (user.Nwc)   NWCLogin_Click(sender, e);
+
+                if (user.Jps)   JPSLogin_Click(sender, e);
+
             }
         }
 

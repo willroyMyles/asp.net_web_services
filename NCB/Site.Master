@@ -39,7 +39,7 @@
         </asp:ScriptManager>
 
      <nav class="navbar fixed-top navbar-expand-md nav-dark bg-dark">
-  <h3 class="white-text white light-text text-light">MiCasa</h3>
+  <h3 class="white-text white light-text text-light">NCB Online</h3>
   <!-- <img class="navbar-brand" src="http://acmsocc.github.io/2016/assets/img/googlelogo_color_324x112dp.png" id="logo_custom" width="10%" alt="logo"> -->
   <button class="navbar-toggler navbar-toggler-right custom-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon "><i class="fa fa-bars" aria-hidden="true"></i></span>
@@ -52,13 +52,6 @@
       <li class="nav-item">
         <a class="nav-link text-white p-2 pl-4 pr-4" href="Register.aspx" runat="server"><h6>Sign on</h6></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link text-white p-2 pl-4 pr-4" href=""><h6>Description</h6></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white p-2 pl-4 pr-4" href="registerproperty.php"><h6>Register Property</h6></a>
-      </li>
-      
     </ul>
   </div>
 </nav>
@@ -69,7 +62,10 @@
             <hr />
         </div>
 
-        <footer class="page-footer bg-dark text-light">
+       
+
+    </form>
+     <footer class="page-footer bg-dark text-light m-0">
           <div class="container p-3 ">
             <div class="row">
               <div class="col l6 s12">
@@ -82,17 +78,12 @@
                 <h5 class="white-text">Links</h5>
                 <ul>
                 <li class="nav-item">
-        <a class="nav-link text-white p-2" href="registration.php"><h6>Registration</h6></a>
+        <a class="nav-link text-white p-2" href="Default.aspx"><h6>Home</h6></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white p-2" href="location.php"><h6>Location</h6></a>
+        <a class="nav-link text-white p-2" href="Register.aspx"><h6>Sign On</h6></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link text-white p-2" href="description.php"><h6>Description</h6></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white p-2" href="registerproperty.php"><h6>Register Property</h6></a>
-      </li>
+   
                 </ul>
               </div>
             </div>
@@ -104,7 +95,5 @@
             </div>
           </div>
         </footer>
-
-    </form>
 </body>
 </html>

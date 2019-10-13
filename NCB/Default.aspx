@@ -38,7 +38,14 @@
                                    </div>
                                </div>
                     </div>
-                    <%} %>
+                    <%}
+                        else
+                        {%>
+                    <div class="row justify-content-center p-5">
+                                                  <a href="Register.aspx">LogIn to see details</a>
+
+                    </div>
+                    <%}%>
                 </div>
             </div>
             <div class="col-md-4">
