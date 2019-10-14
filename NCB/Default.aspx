@@ -2,7 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="container">
+    <div class="container flex" style="min-height:0vh;">
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
@@ -28,15 +28,26 @@
                                        </div>
                                        <asp:TextBox ID="DepositBox" TextMode="Number" runat="server" CssClass="form-control"></asp:TextBox>
                                    </div>
-                               </div>
+                           <%--     <asp:RequiredFieldValidator ControlToValidate="DepositBox" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Field cannot be empty"></asp:RequiredFieldValidator>
+                                <asp:RangeValidator ControlToValidate="DepositBox" ID="RangeValidator1" runat="server" MinimumValue="1" MaximumValue="1000000000000" ErrorMessage="Value must get greater than 0"></asp:RangeValidator>
+                              --%> </div>
                                <div class="row my-2">
                                    <div class="input-group">
                                        <div class="input-group-prepend">
                                            <asp:Button OnClick="Widthdrawl_Click" ID="Widthdrawl" runat="server" Text="Withdrawl" class="btn btn-secondary"/>   
                                        </div>
                                        <asp:TextBox ID="WithdrawlBox" TextMode="Number" runat="server" CssClass="form-control"></asp:TextBox>
+                                <%--<asp:RequiredFieldValidator ControlToValidate="WithdrawlBox" ID="RequiredFieldValidator2" runat="server" ErrorMessage="Field cannot be empty"></asp:RequiredFieldValidator>--%>
+
+                                 <%--      <asp:RangeValidator ControlToValidate="WithdrawlBox" ID="RangeValidator3" runat="server" MaximumValue="500" ErrorMessage="Only can withdraw $500 at a time"></asp:RangeValidator>
+                                       <asp:RangeValidator ControlToValidate="WithdrawlBox" ID="RangeValidator4" runat="server" MinimumValue="1" MaximumValue="99999999999999" ErrorMessage="cant withdraw less than 1 dollar" CssClass="alert-danger p-1 rounded"></asp:RangeValidator>--%>
+
                                    </div>
                                </div>
+                        <div class="row justify-content-center">
+                        <asp:Button OnClick="logoff_Click" ID="logoff" runat="server" Text="Sign Out" class="btn btn-light btn-block"/>   
+
+                        </div>
                     </div>
                     <%}
                         else
@@ -193,7 +204,27 @@
                     } %>
             </div> 
             </div>
+
+           
+
         </div>
+     <div class="col-md-4 my-4">
+                <div class="card">
+                    <div class="card-header">
+                    Check Linked Status
+                    </div>
+                    <div class="card-body p-2 m-2">
+                        <asp:TextBox ID="IdBox" runat="server" CssClass="form-control m-2" placeholder="Id Number"></asp:TextBox>
+                        <asp:TextBox ID="passwordBox" runat="server" CssClass="form-control m-2" placeholder="Password"></asp:TextBox>
+                        <asp:Button OnClick="checkBtn_Click" ID="checkBtn" runat="server" Text="Check" CssClass="m-2 btn-block btn btn-primary" placeholder=""/></div>
+                    <br />
+                    <asp:PlaceHolder ID="statusText" runat="server"></asp:PlaceHolder>
+                    <div class="card-footer text-muted">
+                        Check Linked Status
+                    </div>
+                </div>
+            </div>
+
     </div>
 
 </asp:Content>

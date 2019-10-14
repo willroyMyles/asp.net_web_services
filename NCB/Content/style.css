@@ -1,0 +1,23 @@
+﻿body {
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(128, 128, 128, .5) !important;
+   
+}
+
+form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: red;
+}
+
+form-control::-ms-input-placeholder { /* Microsoft Edge */
+    color: red;
+}
+
+footer{
+    margin-bottom: -20px !important;
+}
+
+.sav{
+    color: rgba(240,240,240,1);
+}

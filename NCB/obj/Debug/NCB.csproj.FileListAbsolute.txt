@@ -93,5 +93,3 @@ C:\Users\W\source\repos\NCB\NCB\bin\EntityFramework.dll
 C:\Users\W\source\repos\NCB\NCB\bin\EntityFramework.SqlServer.dll
 C:\Users\W\source\repos\NCB\NCB\bin\EntityFramework.xml
 C:\Users\W\source\repos\NCB\NCB\bin\EntityFramework.SqlServer.xml
-C:\Users\W\source\repos\NCB\NCB\obj\Debug\NCB.Migrations.AddedUsers.resources
-C:\Users\W\source\repos\NCB\NCB\obj\Debug\NCB.csproj.GenerateResource.cache

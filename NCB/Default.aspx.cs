@@ -162,5 +162,54 @@ namespace NCB
             user.Balance = newBalance;
             GV.JpsUser["balance"] = jpsnewBalance;
         }
+
+        protected void logoff_Click(object sender, EventArgs e)
+        {
+            GV.NwcUser = null;
+            GV.JpsUser = null;
+            GV.User = null;
+        }
+
+        protected void checkBtn_Click(object sender, EventArgs e)
+        {
+
+            UserTableAdapters.UsersTableAdapter uta = new UserTableAdapters.UsersTableAdapter();
+            var result = uta.GetUserById(IdBox.Text);
+            if (result[0] == null) return;
+            if (result.Rows.Count <= 0) return;
+            if (result[0].Password == passwordBox.Text)
+            {
+                NWCServices.NWCServiceSoapClient nwcsoap = new NWCServices.NWCServiceSoapClient();
+                JPSService.JPSServiceSoapClient jpsopap = new JPSService.JPSServiceSoapClient();
+                var lbl1 = new Label();
+                var lbl2 = new Label();
+                if (nwcsoap.Login(result[0].Id, result[0].Password))
+                {
+                    lbl1.Text = "NWC Account Linked";
+                    lbl1.CssClass += "alert-success p-2";
+                }
+                else
+                {
+                    lbl1.Text = "NWC Account Not Linked";
+                    lbl1.CssClass += "alert-danger p-2";
+                }
+             
+                if(jpsopap.Login(result[0].Id, result[0].Password))
+                {
+                    lbl2.Text = "JPS Account Linked";
+                    lbl2.CssClass += "alert-success p-2";
+                }
+                else
+                {
+                    lbl2.Text = "JPS Account Not Linked";
+                    lbl2.CssClass += "alert-danger p-2";
+                }
+
+                statusText.Controls.Add(lbl1);
+                statusText.Controls.Add(lbl2);
+
+
+            }
+        }
     }
 }
